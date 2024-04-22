@@ -1,0 +1,36 @@
+import cv2
+import numpy as np
+import os
+from  skimage.metrics import structural_similarity as ssim
+
+def compare_images(img1_path, img2_path):
+    # Construct the full paths to the images
+    directory = '/workspaces/codespaces-flask/'
+    img1_full_path = os.path.join(directory, img1_path)
+    img2_full_path = os.path.join(directory, img2_path)
+    
+    # Load images
+    img1 = cv2.imread(img1_full_path)
+    img2 = cv2.imread(img2_full_path)
+    
+    # Convert images to grayscale
+    gray1 = cv2.cvtColor(img1, cv2.COLOR_BGR2GRAY)
+    gray2 = cv2.cvtColor(img2, cv2.COLOR_BGR2GRAY)
+    
+    # Compute Structural Similarity Index (SSIM)
+    ssim_index = ssim(gray1, gray2)
+    
+    # Define a threshold for SSIM to determine if images are similar
+    threshold = 0.95
+    
+    # Compare SSIM with threshold
+    if ssim_index > threshold:
+        return "System scan NORMAL"
+    else:
+        return "Anomalies found"
+
+# Example usage
+img1_path = "Screenshot (916).png"
+img2_path = "Screenshot (916).png"
+result = compare_images(img1_path, img2_path)
+print(result)

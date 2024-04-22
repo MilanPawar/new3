@@ -1,0 +1,15 @@
+<!-- templates/result.html -->
+<!-- 
+<html>
+<body>
+    <h1>Sum of the Numbers</h1>
+    <p>The sum of {{ num1 }} and {{ num2 }} is: {{ result }}</p>
+</body>
+</html> -->
+<html> <head><title>{{ title }}</title></head> <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+<body>
+    <h1>Result</h1>
+    <p>{{ result }}</p>
+    <img src="{{ url_for('static', filename='OIP (1).jpg') }}" alt="Dataset Image">
+</body>
+</html>
